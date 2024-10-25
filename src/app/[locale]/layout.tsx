@@ -1,4 +1,6 @@
 import {routing} from '@/src/i18n/routing';
+import {NextIntlClientProvider} from 'next-intl';
+import {getMessages} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {ReactNode} from 'react';
 
@@ -16,12 +18,20 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
+
   return (
     <html lang={locale}>
       <head>
         <title>next-intl-bug-repro-app-router</title>
       </head>
-      <body>{children}</body>
+      <body>
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
     </html>
   );
 }
