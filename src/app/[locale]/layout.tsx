@@ -14,24 +14,23 @@ export default async function LocaleLayout({
   params: { locale },
 }: Props) {
   // Ensure that the incoming `locale` is valid
-  // if (!routing.locales.includes(locale as any)) {
-  //   notFound();
-  // }
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
 
   // Providing all messages to the client
   // side is the easiest way to get started
-  // const messages = await getMessages();
+  const messages = await getMessages();
 
   return (
-    // <html lang={locale}>
-    <html>
+    <html lang={locale}>
       <head>
         <title>next-intl-bug-repro-app-router</title>
       </head>
       <body>
-        {/* <NextIntlClientProvider messages={messages}> */}
-        {children}
-        {/* </NextIntlClientProvider> */}
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
