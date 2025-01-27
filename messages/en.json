@@ -1,5 +1,8 @@
 {
   "IndexPage": {
     "title": "Hello!"
+  },
+  "OnlyDev": {
+    "title": "Only for development but not included on build!"
   }
 }
