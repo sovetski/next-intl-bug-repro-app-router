@@ -7,7 +7,8 @@ import { PHASE_DEVELOPMENT_SERVER } from "next/constants";
 const withNextIntl = createNextIntlPlugin();
 
 export default (phase: string) => {
-  const nextConfig = {
+  const nextConfig: NextConfigonfig = {
+    output: "export",
     pageExtensions: (() => {
       const baseExtensions = ["ts", "tsx", "js", "jsx"];
       const isDevServer = phase === PHASE_DEVELOPMENT_SERVER;
